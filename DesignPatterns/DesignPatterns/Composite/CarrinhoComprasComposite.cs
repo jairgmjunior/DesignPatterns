@@ -8,16 +8,16 @@ namespace DesignPatterns.Composite
 {
     public class CarrinhoComprasComposite : ProdutoBase, IProduto
     {
-        private List<ProdutoBase> _presentes;
+        private List<ProdutoBase> _produto;
 
         public CarrinhoComprasComposite(string nome, decimal preco) : base(nome, preco)
         {
-            _presentes = new List<ProdutoBase>();
+            _produto = new List<ProdutoBase>();
         }
 
-        public void Add(ProdutoBase presente)
+        public void Add(ProdutoBase produto)
         {
-            _presentes.Add(presente);
+            _produto.Add(produto);
         }
 
         public override decimal CalcularPreco()
@@ -26,7 +26,7 @@ namespace DesignPatterns.Composite
 
             Console.WriteLine($"{Nome} contém os seguintes produtos: ");
 
-            foreach(var presente in _presentes)
+            foreach(var presente in _produto)
             {
                 total += presente.CalcularPreco();
             }
@@ -34,9 +34,9 @@ namespace DesignPatterns.Composite
             return total;
         }
 
-        public void Remove(ProdutoBase presente)
+        public void Remove(ProdutoBase produto)
         {
-            _presentes.Remove(presente);
+            _produto.Remove(produto);
         }
     }
 }
